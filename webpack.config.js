@@ -6,7 +6,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
+    index: './src/components/home/index.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "ToDo's",
-      template: './src/index.html',
+      template: './src/components/home/index.html',
       publicPath: './',
     }),
     new CopyPlugin({
