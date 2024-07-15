@@ -20,5 +20,6 @@
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
     "wepack-cli": "^0.0.1-security"
-  }
+  },
+  "main": "webpack.config.js"
 }
