@@ -1,7 +1,9 @@
+import './style.css';
+
 const HomeComponent = (() => {
-  const element = document.createElement('div');
-  
-  document.body.appendChild(element);
+  const HomeLayout = document.createElement('div');
+  HomeLayout.classList.add('HomeLayout');
+  document.body.appendChild(HomeLayout);
 })();
 
 export default HomeComponent;
