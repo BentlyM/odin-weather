@@ -11,7 +11,7 @@ const HomeComponent = (() => {
     HomeLayout.appendChild(generateRightDiv());
 
     return HomeLayout;
-  }
+  };
 
   const generateLeftDiv = () => {
     const leftDiv = document.createElement('div');
@@ -24,7 +24,7 @@ const HomeComponent = (() => {
     getSharedContent('location-search-card');
 
     return leftDiv;
-  }
+  };
 
   const generateRightDiv = () => {
     const rightDiv = document.createElement('div');
@@ -34,12 +34,12 @@ const HomeComponent = (() => {
     getSharedContent('location-display-card');
 
     return rightDiv;
-  }
+  };
 
   const init = () => {
     const layout = createHomeLayout();
     document.querySelector('main').appendChild(layout);
-  }
+  };
 
   init();
 
