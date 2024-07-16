@@ -1,4 +1,4 @@
-export const getWeather = async (location) => {
+const getWeather = async (location) => {
   try {
     if (location === '' || location === undefined)
       throw new Error('Location Must Be Injected...');
@@ -12,13 +12,14 @@ export const getWeather = async (location) => {
 
     if (!response.ok)
       throw new Error(
-        `Error: unable to load preview, HTTP response $ response.statusText}.`
+        `Error: unable to load preview, HTTP response ${response.status}.`
       );
 
     const data = await response.json();
     return data;
   } catch (e) {
-    console.log(e);
     return e;
   }
 };
+
+export default getWeather;

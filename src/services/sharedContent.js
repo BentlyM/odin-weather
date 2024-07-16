@@ -16,7 +16,8 @@ const getSharedContent = (contentId) => {
 
     if (id === 'location-search-card') {
       const searchInput = document.createElement('input');
-      searchInput.placeholder = 'Enter city name';
+      searchInput.placeholder = 'Enter location name';
+      searchInput.id = 'search';
       searchInput.style.margin = '20px';
       searchInput.style.padding = '0.5vw';
       searchInput.style.fontSize = '1.2rem';
@@ -26,7 +27,13 @@ const getSharedContent = (contentId) => {
 
       contentBody.appendChild(searchInput);
     } else {
-      contentBody.appendChild(displayWeatherCardContent());
+      document.querySelector('input').addEventListener('keypress',(e)=>{
+        if(e.key != 'Enter') return;
+
+        console.log(e.target.value);
+        contentBody.appendChild(displayWeatherCardContent(e.target.value));
+        e.target.value = '';
+      })
     }
 
     const contentFooter = document.createElement('div');

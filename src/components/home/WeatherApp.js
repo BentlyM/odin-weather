@@ -1,27 +1,47 @@
-const displayWeatherCardContent = () => {
-    
-    const weatherCardContent = document.createElement('div');
-    weatherCardContent.classList.add('weather-content');
+import getWeather from '../../services/weatherService';
 
-    const loaderDisplay = () => {
-      const loadingWarp = document.createElement('div');
-      loadingWarp.classList.add('load-warp');
+const displayWeatherCardContent = (location) => {
+  const weatherCardContent = document.createElement('div');
+  weatherCardContent.classList.add('weather-content');
 
-      const loader = document.createElement('div');
-      loader.id = 'loader';
+  const loaderDisplay = async () => {
+    const loadingWarp = document.createElement('div');
+    loadingWarp.classList.add('load-warp');
 
-      const loaderText = document.createElement('p');
-      loaderText.textContent = 'Weather API content will be displayed here';
+    const loader = document.createElement('div');
+    loader.id = 'loader';
 
-      loadingWarp.appendChild(loader);
-      loadingWarp.appendChild(loaderText);
+    const loaderText = document.createElement('p');
+    loaderText.textContent = 'Weather API content will be displayed here';
 
-      return loadingWarp;
-    }
+    loadingWarp.appendChild(loader);
+    loadingWarp.appendChild(loaderText);
 
-
-    weatherCardContent.appendChild(loaderDisplay());
-    return weatherCardContent;
+    return loadingWarp;
   };
-  
-  export default displayWeatherCardContent;
+
+  const renderWeather = async () => {
+    const load = await loaderDisplay();
+    weatherCardContent.appendChild(load);
+
+    getWeather(location).then((forecast) => {
+      // Remove the loader once the forecast data is loaded
+      weatherCardContent.removeChild(load);
+
+      const weatherWarp = document.createElement('div');
+      weatherWarp.classList.add('weather-warp');
+
+      // Add the forecast data to the weatherWarp element
+      // ...
+      console.log(forecast);
+
+      weatherCardContent.appendChild(weatherWarp);
+    });
+  };
+
+  renderWeather();
+
+  return weatherCardContent;
+};
+
+export default displayWeatherCardContent;

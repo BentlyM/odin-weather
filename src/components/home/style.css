@@ -64,7 +64,8 @@ main {
     height: 50%;
     background-image: url(/src/assets/images/arrow.png);
     background-color: transparent;
-    background-size: contain;
+    background-size:contain;
+    background-position: center;
     background-repeat: no-repeat;
     box-shadow: none;
 }
