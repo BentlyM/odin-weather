@@ -1,4 +1,4 @@
-# [Weather :D]
+# Weather :D
 
 this was a pretty cool project in webpack lol
 
