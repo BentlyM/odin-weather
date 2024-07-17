@@ -27,13 +27,24 @@ const getSharedContent = (contentId) => {
 
       contentBody.appendChild(searchInput);
     } else {
-      document.querySelector('input').addEventListener('keypress',(e)=>{
-        if(e.key != 'Enter') return;
+      document.querySelector('input').addEventListener('keypress', (e) => {
+        if (e.key != 'Enter') return;
 
         console.log(e.target.value);
-        contentBody.appendChild(displayWeatherCardContent(e.target.value));
+
+        const displayWeather = displayWeatherCardContent(e.target.value);
+
+        if (contentBody.childNodes[0]) {
+          contentBody.replaceChild(
+            displayWeather,
+            contentBody.childNodes[0]
+          );
+        } else {
+          contentBody.appendChild(displayWeather);
+        }
+
         e.target.value = '';
-      })
+      });
     }
 
     const contentFooter = document.createElement('div');
